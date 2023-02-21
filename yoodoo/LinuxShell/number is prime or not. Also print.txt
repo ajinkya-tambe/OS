@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Get input from user
+read -p "Enter a number to check if it is prime: " num
+
+# Function to check if a number is prime
+function is_prime {
+  if [ $1 -lt 2 ]; then
+    return 1
+  fi
+  for ((i=2; i<=$1/2; i++)); do
+    if [ $(( $1 % $i )) -eq 0 ]; then
+      return 1
+    fi
+  done
+  return 0
+}
+
+# Check if the number is prime
+is_prime $num
+if [ $? -eq 0 ]; then
+  echo "$num is prime"
+else
+  echo "$num is not prime"
+fi
+
+# Function to reverse a number
+function reverse {
+  local num=$1
+  local rev=0
+  while [ $num -gt 0 ]; do
+    rev=$(( $rev * 10 + $num % 10 ))
+    num=$(( $num / 10 ))
+  done
+  echo $rev
+}
+
+# Print the reverse of the number
+echo "The reverse of $num is $(reverse $num)"

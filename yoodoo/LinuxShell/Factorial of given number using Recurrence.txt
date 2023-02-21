@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Using Recurrence Method
+function factorial_recurrence {
+    if [ $1 -le 1 ]
+    then
+        echo 1
+    else
+        echo $(( $1 * $(factorial_recurrence $(( $1 - 1 ))) ))
+    fi
+}
+
+# Without Recurrence Method
+function factorial_without_recurrence {
+    result=1
+    for (( i=1; i<=$1; i++ ))
+    do
+        result=$(( result * i ))
+    done
+    echo $result
+}
+
+read -p "Enter a number: " num
+
+# Using Recurrence Method
+result1=$(factorial_recurrence $num)
+echo "Factorial of $num using recurrence method is: $result1"
+
+# Without Recurrence Method
+result2=$(factorial_without_recurrence $num)
+echo "Factorial of $num without using recurrence method is: $result2"
