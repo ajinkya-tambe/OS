@@ -1,0 +1,128 @@
+
+//check the count of number of substrings in given string
+
+if [ $# -ne 2 ]; then
+  echo "Usage: $0 <substring> <string>"
+  exit 1
+fi
+
+substring=$1
+string=$2
+
+count=$(echo $string | grep -o $substring | wc -l)
+
+echo "The substring '$substring' occurs $count times in the string '$string'"
+
+--------------------------------------------------------------------------------------------------
+
+//prime check and reverse
+
+
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <number>"
+  exit 1
+fi
+
+num=$1
+temp=$num
+
+# Reverse the number
+rev=0
+while [ $temp -gt 0 ]
+do
+  rem=$((temp % 10))
+  rev=$((rev * 10 + rem))
+  temp=$((temp / 10))
+done
+
+echo "Reverse of $1 is $rev"
+
+# Check if the number is less than 2
+if [ $num -lt 2 ]; then
+  echo "$num is not a prime number"
+  exit 0
+fi
+
+
+# Check if the number is divisible by any number between 2 and the square root of the number
+for (( i=2; i*i<=num; i++ ))
+do
+  if [ $((num % i)) -eq 0 ]; then
+    echo "$num is not a prime number"
+    exit 0
+  fi
+done
+
+----------------------------------------------------------------------------------------------------------
+
+//recursive and non recursive factorial
+# Recursive function to calculate the factorial of a number
+function factorial_recursive {
+    if [ $1 -eq 1 ]
+    then
+        echo 1
+    else
+        local previous_factorial=$(factorial_recursive $(( $1 - 1 )))
+        echo $(( $1 * $previous_factorial ))
+    fi
+}
+
+
+# Non-recursive function to calculate the factorial of a number
+function factorial_non_recursive {
+    local num=$1
+    local result=1
+    while [ $num -gt 1 ]
+    do
+        result=$(( $result * $num ))
+        num=$(( $num - 1 ))
+    done
+    echo $result
+}
+
+# Prompt the user to enter a number
+echo "Enter a number: "
+read num
+
+# Calculate the factorial using the recursive method
+factorial_recursive=$(factorial_recursive $num)
+echo "Factorial using recursion: $factorial_recursive"
+
+# Calculate the factorial using the non-recursive method
+factorial_non_recursive=$(factorial_non_recursive $num)
+echo "Factorial using non-recursion: $factorial_non_recursive"
+
+--------------------------------------------------------------------------------------------------------------
+
+//checking string if palindrome or not
+
+#!/bin/bash
+
+# Prompt the user to enter a number
+echo "Enter a number: "
+read num
+
+# Store the original number in a variable
+original=$num
+
+# Reverse the number
+reverse=0
+while [ $num -gt 0 ]
+do
+    remainder=$(( $num % 10 ))
+    reverse=$(( $reverse * 10 + $remainder ))
+    num=$(( $num / 10 ))
+done
+
+# Check if the original number is equal to the reversed number
+if [ $original -eq $reverse ]
+then
+    echo "The number $original is a palindrome"
+else
+    echo "The number $original is not a palindrome"
+fi
+
+# Print the reverse of the original number
+echo "The reverse of $original is $reverse"
+
+echo "$num is a prime number"

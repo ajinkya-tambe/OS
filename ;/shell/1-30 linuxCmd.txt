@@ -1,0 +1,32 @@
+•	To change password: passwd
+•	To display system's date: date
+•	To count the number of lines in /etc/passwd file: wc -l /etc/passwd
+•	To find out who else is on the system: who
+•	To direct the output of man pages for the date command to a file named mydate: man date > mydate
+•	To create a subdirectory called mydir: mkdir mydir
+•	To move the file mydate into the new subdirectory: mv mydate mydir/
+•	To copy the file mydate to a new file called ourdate: cp mydir/mydate mydir/ourdate
+•	To list the contents of mydir: ls mydir
+•	To do a long listing on the file ourdate and note the permissions: ls -l mydir/ourdate
+•	To display the name of the current directory starting from the root: pwd
+•	To move the files in the directory mydir back to your home directory: mv mydir/* ~
+•	To display the first 5 lines of mydate: head -5 mydate
+•	To display the last 8 lines of mydate: tail -8 mydate
+•	To remove the directory mydir: rm -r mydir
+•	To redirect the output of the long listing of files to a file named list: ls -l > list
+•	To select any 5 capitals of states in India and enter them in a file named capitals1. Choose 5 more capitals and enter them in a file named capitals2. Choose 5 more capitals and enter them in a file named capitals3. Concatenate all 3 files and redirect the output to a file named capitals: cat capitals1 capitals2 capitals3 > capitals
+•	To concatenate the file capitals2 at the end of file capitals: cat capitals2 >> capitals
+•	To give read and write permissions to all users for the file capitals: chmod a+rw capitals
+•	To give read permissions only to the owner of the file capitals. Open the file, make some changes and try to save it. What happens ? chmod u+r capitals
+•	nano capitals
+When trying to save, the editor will show an error indicating that it is unable to save the file since write permission is not granted for the owner.
+•	To create an alias to concatenate the 3 files capitals1, capitals2, capitals3 and redirect the output to a file named capitals: alias mycat='cat capitals1 capitals2 capitals3 > capitals'
+•	To find out the number of times the string “the” appears in the file mydate: grep -o 'the' mydate | wc -l
+•	To find out the line numbers on which the string “date” exists in mydate: grep -n 'date' mydate
+•	To print all lines of mydate except those that have the letter “i” in them: grep -v 'i' mydate
+•	To list the words of 4 letters from the file mydate: grep -o -w '[[:alpha:]]\{4\}' mydate
+•	To list 5 states in north east India in a file mystates. List their corresponding capitals in a file mycapitals. Use the paste command to join the 2 files:
+•	swift
+•	Copy code
+•	echo -e "State1\nState2\nState3\nState4\nState5" > mystates
+•	echo -e "Capital

@@ -1,0 +1,9 @@
+Assignment No. 2 - Shell Programming
+
+- Basic Arithematic (4)
+- Control Structure (Odd/Even)
+- Looping
+- Command Line Argument
+- Function
+- Arrays
+- Strings
